@@ -1,0 +1,45 @@
+// Username and Other Data Logic
+const firebaseConfig = {
+  apiKey: "AIzaSyCiD0AO-3eIZcnqzmnfrQBUwTpIvTjGf1M",
+  authDomain: "portfolio-50e40.firebaseapp.com",
+  databaseURL: "https://portfolio-50e40-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "portfolio-50e40",
+  storageBucket: "portfolio-50e40.appspot.com",
+  messagingSenderId: "816498543374",
+  appId: "1:816498543374:web:75f5c1caa2659d8cbba55f",
+  measurementId: "G-617EDN0JYR"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var workDb = firebase.database().ref('portfolio')
+
+document.getElementById('submitWork').addEventListener('submit', submitWork);
+
+function submitWork(e) {
+  e.preventDefault();
+
+  var title = getElementVal("title");                              
+  var author = getElementVal("author");                        
+  var body = getElementVal("work");                  
+  saveMessages(name, emailid, msgContent);                       
+  //   enable alert
+  document.querySelector(".alert").style.display = "block";
+  //   remove the alert
+  setTimeout(() => {
+    document.querySelector(".alert").style.display = "none";
+  }, 3000);
+  //   reset the form
+  document.getElementById("submitWork").reset();
+}
+
+const saveMessages = (title, author, body) => {
+  var newworkDB = workDb.push();
+  newContactForm.set({
+    title: title,
+    author: author,
+    body: body
+  });
+};
+const getElementVal = (id) => {
+  return document.getElementById(id).value;
+};
